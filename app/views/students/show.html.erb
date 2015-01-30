@@ -1,0 +1,26 @@
+<h1>Student Record</h1>
+<p><h2><%= @student.name %></h2>
+  <ul>
+    <li>Major: <%= @student.major %></li>
+    <li>Year: <%= @student.year %></li>
+    <li>GPA: <%= @student.gpa %></li>
+  </ul>
+</p>
+
+<h3>Completed Courses</h3>
+<table>
+  <!--<tr>
+    <th>Number</th>
+    <th>Name</th>
+  </tr>-->
+  <% @student.courses.each do |course| %>
+      <tr>
+        <td><%= course.number %></td>
+        <td><%= course.name %></td>
+        <td><%= link_to 'Delete', [course.student, course], method: :delete, data: { confirm: 'Are you sure you want to remove this course?'} %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', students_path %>
+<%= link_to 'Edit', edit_student_path(@student) %>

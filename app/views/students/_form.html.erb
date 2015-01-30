@@ -1,0 +1,34 @@
+<%= form_for @student  do |f| %>
+
+    <% if @student.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@student.errors.count, "error") %> prevented adding this student:
+          </h2>
+          <ul>
+            <% @student.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :major %><br>
+      <%= f.text_field :major %>
+    </p>
+    <p>
+      <%= f.label :year %><br>
+      <%= f.text_field :year %>
+    </p>
+    <p>
+      <%= f.label :gpa %><br>
+      <%= f.text_field :gpa %>
+    </p>
+
+    <p><%= f.submit %></p>
+<% end %>
